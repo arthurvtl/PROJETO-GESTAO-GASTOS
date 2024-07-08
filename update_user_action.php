@@ -6,9 +6,12 @@
     $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
     $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL, FILTER_VALIDATE_EMAIL);
-    $nascimento = date('Y-m-d', strtotime(filter_input(INPUT_POST, 'nascimento')));
+    $nascimento = filter_input(INPUT_POST, 'nascimento', FILTER_SANITIZE_SPECIAL_CHARS);
     $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
     $confirmar_senha = filter_input(INPUT_POST, 'confirmar_senha', FILTER_SANITIZE_SPECIAL_CHARS);
+
+    $nascimento = date('Y-m-d', strtotime(str_replace('/', '-', $nascimento)));
+
 
     // Verifica se o nome, email e data de nascimento foram preenchidos corretamente
     if($nome && $email && $nascimento){

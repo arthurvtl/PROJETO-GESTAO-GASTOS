@@ -1,29 +1,29 @@
 <?php
-    // Inclui o arquivo de configuração
-    require_once './config.php';
+require_once './config.php';
 
-    // Filtra e sanitiza os dados recebidos do formulário
-    $titulo = filter_input(INPUT_POST, 'novo_titulo', FILTER_SANITIZE_SPECIAL_CHARS);
-    $tipo = filter_input(INPUT_POST, 'novo_tipo', FILTER_SANITIZE_SPECIAL_CHARS);
-    $data = date('Y-m-d', strtotime(filter_input(INPUT_POST, 'newDate'))); // Converte a data para o formato YYYY-MM-DD
-    $valor = filter_input(INPUT_POST, 'newValor', FILTER_SANITIZE_SPECIAL_CHARS);
-    $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
-    $date = [];
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-    // Verifica se todos os campos foram preenchidos corretamente
-    if($titulo && $tipo && $data && $valor && $id){
-        // Atualiza os dados do item no banco de dados
-        $sql = $pdo->prepare("UPDATE item SET titulo = :titulo, tipo = :tipo, data = :data, valor = :valor WHERE id = :id AND id_user = :id_user");
-        $sql->bindValue(":id_user", $_SESSION['login']['id']); // Adiciona o ID do usuário à cláusula WHERE para evitar que um usuário modifique itens de outros usuários
-        $sql->bindValue(":titulo", $titulo);
-        $sql->bindValue(":tipo", $tipo);
-        $sql->bindValue(":data", $data);
-        $sql->bindValue(":valor", $valor);
-        $sql->bindValue(":id", $id);
-        $sql->execute(); // Executa a consulta SQL para atualizar o item no banco de dados
-    }
+$id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+$novo_titulo = filter_input(INPUT_POST, 'novo_titulo', FILTER_SANITIZE_SPECIAL_CHARS);
+$novo_tipo = filter_input(INPUT_POST, 'novo_tipo', FILTER_SANITIZE_SPECIAL_CHARS);
+$newData = filter_input(INPUT_POST, 'newData', FILTER_SANITIZE_SPECIAL_CHARS);
+$newValor = filter_input(INPUT_POST, 'newValor', FILTER_SANITIZE_SPECIAL_CHARS);
 
-    // Redireciona o usuário de volta para a página inicial após a atualização
-    header('location: '.$base);
-    exit; // Encerra o script PHP
+$newData = date('Y-m-d', strtotime(str_replace('/', '-', $newData)));
+$newValor = str_replace(',', '.', $newValor);
+
+if ($id && $novo_titulo && $novo_tipo && $newData && $newValor) {
+    $sql = $pdo->prepare("UPDATE item SET titulo = :novo_titulo, tipo = :novo_tipo, data = :newData, valor = :newValor WHERE id = :id");
+    $sql->bindValue(':id', $id);
+    $sql->bindValue(':novo_titulo', $novo_titulo);
+    $sql->bindValue(':novo_tipo', $novo_tipo);
+    $sql->bindValue(':newData', $newData);
+    $sql->bindValue(':newValor', $newValor);
+    $sql->execute();
+}
+
+header('Location: index.php');
+exit;
 ?>
