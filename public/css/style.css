@@ -1,0 +1,763 @@
+/* Importa a fonte 'Poppins' do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap');
+
+/* Define estilos base para todos os elementos */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Faz com que o padding e border sejam incluídos na largura total e altura dos elementos */
+    font-family: 'Poppins', sans-serif; /* Define a fonte padrão */
+    text-decoration: none; /* Remove o sublinhado dos links */
+}
+
+/* Define variáveis de cores para serem reutilizadas no CSS */
+:root{
+    --Greendark: #24B253; /* Verde escuro */
+    --Green: #31ed5c; /* Verde claro */
+    --Red: #ff0033; /* Vermelho */
+    --Dark: #141318; /* Preto */
+    --dark2: #333; /* Cinza escuro */
+    --dark3: #999; /* Cinza médio */
+    --Light: #F9F9F9; /* Branco */
+    --light2: #eee; /* Cinza claro */
+    --light3: #ccc; /* Cinza mais claro */
+}
+
+/* Estilos para o corpo do documento */
+body{
+    background-color: #4D4D4D; /* Cor de fundo cinza */
+}
+
+/* Estilos para links no corpo do documento */
+body a{
+    color: inherit; /* Herda a cor do elemento pai */
+}
+
+/* Estilos para links no corpo do documento quando passa o mouse */
+body a:hover{
+    text-decoration: none; /* Remove o sublinhado ao passar o mouse */
+    color: inherit; /* Herda a cor do elemento pai */
+}
+
+/* Estilos para o cabeçalho */
+.header{
+    height: 75px;
+    width: 100%;
+    background: linear-gradient(90deg, #24B253 0%, #1AA34A 100%); /* Gradiente de verde */
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between; /* Espaçamento entre os itens */
+    padding: 0 3em; /* Padding horizontal */
+}
+
+/* Estilos para o logo dentro do cabeçalho */
+.header .logo {
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    padding-top: 2rem;
+    padding-right: 6.875rem;
+}
+
+/* Estilos para a imagem do logo */
+.header .logo img{
+    height: 90%;
+    filter: drop-shadow(0 0 6px #1AA34A); /* Sombra verde ao redor da imagem */
+}
+
+/* Estilos para a área do menu */
+.menuArea{
+    top: 0;
+    position: absolute;
+    z-index: 1;
+    right: 2em;
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    border-radius: 5px;
+    overflow: hidden; /* Esconde o que está fora do border-radius */
+}
+
+/* Estilos para as listas não ordenadas */
+.ul, .ul2{
+    width: 100%;
+}
+
+/* Estilos para a segunda lista não ordenada, inicialmente escondida */
+.ul2{
+    display: none;
+    flex-direction: column; /* Os itens são dispostos em coluna */
+}
+
+/* Estilos para os itens do menu */
+.menuItem{
+    list-style: none; /* Remove os marcadores da lista */
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between; /* Espaçamento entre os itens */
+    margin: 0;
+    margin-right: .5em;
+    padding: 1em .5em;
+    background-color: #393939; /* Cor de fundo cinza escuro */
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--Light); /* Cor branca definida na variável */
+    cursor: pointer; /* Cursor em forma de ponteiro */
+}
+
+/* Estilos para os itens do menu ao passar o mouse */
+.menuItem:hover{
+    background-color: #4D4D4D; /* Cor de fundo cinza ao passar o mouse */
+    text-shadow: 0 0 10px #F9F9F950; /* Sombra branca no texto */
+}
+
+/* Estilos para os ícones dentro dos itens do menu */
+.menuItem i{
+    font-size: 20px; /* Tamanho do ícone */
+}
+
+/* Estilos para o item primário do menu */
+.menuItemPrimary{
+    list-style: none; /* Remove os marcadores da lista */
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between; /* Espaçamento entre os itens */
+    margin: .5em 0 0 0 ;
+    margin-right: .5em;
+    padding: .5em;
+    font-weight: 500;
+    width: 100%;
+    font-size: 22px;
+    color: var(--Light); /* Cor branca definida na variável */
+}
+
+/* Estilos para o ícone de menu hambúrguer */
+.fa-bars{
+    font-size: 32px; /* Tamanho do ícone */
+    cursor: pointer; /* Cursor em forma de ponteiro */
+    color: var(--Light); /* Cor branca definida na variável */
+}
+
+/* Estilos para o cabeçalho principal */
+.headerMain{
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(90deg, #24B253 0%, #1AA34A 100%); /* Gradiente de verde */
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-around; /* Espaçamento ao redor dos itens */
+    position: relative;
+}
+
+/* Estilos para as caixas dentro do cabeçalho principal */
+.box1{
+    background-color: var(--Light); /* Cor branca definida na variável */
+    color: var(--dark2); /* Cor cinza escuro definida na variável */
+}
+
+/* Estilos para a segunda caixa dentro do cabeçalho principal */
+.box2{
+    background-color: var(--Green); /* Cor verde definida na variável */
+    color: var(--Light); /* Cor branca definida na variável */
+}
+
+/* Estilos comuns para as caixas */
+.box1, .box2{
+    width: 350px;
+    height: 150px;
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 5px 5px 10px #11111150; /* Sombra nas caixas */
+    display: flex;
+    flex-direction: column; /* Os itens são dispostos em coluna */
+    justify-content: space-between; /* Espaçamento entre os itens */
+    font-weight: 600;
+    padding: 1em;
+    font-size: 20px;
+    top: 60px;
+    position: relative;
+}
+
+/* Estilos para os parágrafos dentro das caixas */
+.box1 p, .box2 p{
+    margin: 0;
+    text-align: center; /* Texto centralizado */
+    font-weight: 700;
+    color: var(--dark2); /* Cor cinza escuro definida na variável */
+    font-size: 34px; /* Tamanho do texto */
+}
+
+/* Estilos para os parágrafos dentro da segunda caixa */
+.box2 p{
+    color: var(--Light); /* Cor branca definida na variável */
+}
+
+/* Estilos para a caixa de cabeçalho */
+.headerBox{
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between; /* Espaçamento entre os itens */
+}
+
+/* Estilos para o conteúdo principal */
+.main{
+    min-height: 100vh; /* Altura mínima de 100% da altura da viewport */
+    width: 100%;
+}
+
+/* Estilos para a área do corpo principal */
+.bodyArea{
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    position: relative;
+    width: 95%;
+    max-width: 1200px; /* Largura máxima */
+    margin: 10em auto 0 auto; /* Margem superior e centralização horizontal */
+    background-color: var(--light2); /* Cor cinza claro definida na variável */
+    border-radius: 5px; /* Bordas arredondadas */
+    flex-direction: column; /* Os itens são dispostos em coluna */
+    box-shadow: 0 0 10px #11111150; /* Sombra na área */
+}
+
+/* Estilos para o cabeçalho da área do corpo */
+.headerBody{
+    display: flex; /* Usa flexbox para alinhamento */
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    position: relative; /* Posicionamento relativo para posicionamento de elementos filhos */
+    width: 100%; /* Largura total */
+    background-color: var(--light2); /* Cor de fundo cinza claro */
+    padding: 1em auto; /* Padding vertical e horizontal automático */
+}
+
+/* Estilos para o título do cabeçalho */
+.headerTitle{
+    width: 100%; /* Largura total */
+    text-align: center; /* Texto centralizado */
+    font-weight: 600; /* Peso da fonte semi-negrito */
+    margin: 1em; /* Margem em todas as direções */
+    font-size: 20px; /* Tamanho da fonte */
+}
+
+/* Estilos para o corpo do item */
+.ItemBody{
+    display: flex; /* Usa flexbox para alinhamento */
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    position: relative; /* Posicionamento relativo para posicionamento de elementos filhos */
+    width: 100%; /* Largura total */
+    margin: 0 auto; /* Margem superior e inferior zero, horizontal automático */
+    background-color: var(--light); /* Cor de fundo branca */
+    padding: 1em 0; /* Padding vertical */
+}
+
+/* Estilos para o título dentro do corpo do item */
+.bodyTitle{
+    width: 100%; /* Largura total */
+    text-align: center; /* Texto centralizado */
+    font-weight: 500; /* Peso da fonte médio */
+    font-size: 18px; /* Tamanho da fonte */
+}
+
+/* Estilos para ícones dentro do título do corpo do item */
+.bodyTitle i{
+    margin: 0 1em; /* Margem horizontal */
+    font-size: 22px; /* Tamanho do ícone */
+    cursor: pointer; /* Cursor em forma de ponteiro */
+    transition: all ease-in-out .2s; /* Transição suave para efeitos */
+}
+
+/* Estilos para a linha horizontal na área do corpo */
+.bodyArea hr{
+    height: 3px; /* Altura da linha */
+    border: 0; /* Sem borda */
+    margin: .2em auto; /* Margem vertical e horizontal automático */
+    width: 100%; /* Largura total */
+}
+
+/* Efeitos ao passar o mouse sobre os ícones */
+.bodyTitle i:hover{
+    transform: scale(1.2); /* Aumenta o tamanho do ícone */
+    transition: all ease-in-out .2s; /* Transição suave para efeitos */
+}
+
+/* Estilos para as áreas modais e de edição */
+.ModalArea, .ModalAreaEdit{
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    position: fixed; /* Posicionamento fixo na tela */
+    z-index: 10; /* Índice de empilhamento */
+    top: 0; /* Posição superior */
+    left: 0; /* Posição esquerda */
+    display: none; /* Inicialmente não exibido */
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+}
+
+/* Estilos para a área de fundo do modal */
+.modalBackArea{
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    position: fixed; /* Posicionamento fixo na tela */
+    z-index: 10; /* Índice de empilhamento */
+    top: 0; /* Posição superior */
+    left: 0; /* Posição esquerda */
+    align-items: center; /* Centraliza os itens verticalmente */
+    cursor: default; /* Cursor padrão */
+}
+
+/* Estilos para os botões de fechar nos modais */
+.closeModal, .closeModalEdit{
+    padding: .3em .8em; /* Padding interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    background-color: var(--Light); /* Cor de fundo branca */
+    color: var(--dark2); /* Cor do texto cinza escuro */
+    position: absolute; /* Posicionamento absoluto */
+    top: 3%; /* Posição superior */
+    right: 3%; /* Posição direita */
+    font-weight: 700; /* Peso da fonte negrito */
+    font-size: 20px; /* Tamanho da fonte */
+    z-index: 12; /* Índice de empilhamento */
+}
+
+/* Estilos para o fundo dos modais */
+.ModalBack, .ModalBackEdit{
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    z-index: 11; /* Índice de empilhamento */
+    position: absolute; /* Posicionamento absoluto */
+    background-color: #000; /* Cor de fundo preta */
+    opacity: 60%; /* Opacidade */
+}
+
+/* Estilos para a frente dos modais */
+.ModalFront, .ModalFrontEdit{
+    position: relative; /* Posicionamento relativo */
+    width: 95%; /* Largura */
+    max-width: 600px; /* Largura máxima */
+    height: 400px; /* Altura */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 0 10px #11111150; /* Sombra na caixa */
+    z-index: 12; /* Índice de empilhamento */
+    background-color: var(--light2); /* Cor de fundo cinza claro */
+    display: flex; /* Usa flexbox para alinhamento */
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: space-between; /* Espaçamento entre os itens */
+    padding: 1em; /* Padding interno */
+    flex-direction: column; /* Os itens são dispostos em coluna */
+}
+
+/* Estilos para os campos de entrada com efeito flutuante */
+.label-float{
+    position: relative; /* Posicionamento relativo */
+    padding-top: 13px; /* Padding superior */
+    width: 90%; /* Largura */
+    margin: 1em; /* Margem em todas as direções */
+}
+  
+/* Estilos para os campos de entrada com efeito flutuante */
+.label-float input{
+    border: 0; /* Sem borda */
+    border-bottom: 2px solid var(--dark3); /* Borda inferior cinza médio */
+    outline: none; /* Sem contorno ao focar */
+    width: 100%; /* Largura total */
+    background-color: transparent; /* Fundo transparente */
+    height: 30px; /* Altura fixa */
+    font-weight: 500; /* Peso da fonte médio */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: all .3s ease-out; /* Transição suave para todos os efeitos */
+    -webkit-appearance:none; /* Remove a aparência padrão no Webkit browsers */
+    border-radius: 0; /* Sem bordas arredondadas */
+}
+
+/* Estilos para o campo de entrada quando focado */
+.label-float input:focus{
+    border-bottom: 2px solid var(--Greendark); /* Borda inferior verde escuro ao focar */
+}
+
+/* Estilos para o placeholder do campo de entrada */
+.label-float input::placeholder{
+    color:transparent; /* Placeholder transparente */
+}
+
+/* Estilos para o label flutuante */
+.label-float label{
+    pointer-events: none; /* O label não interfere com eventos do mouse */
+    position: absolute; /* Posicionamento absoluto */
+    top: 0; /* No topo do campo de entrada */
+    left: 0; /* À esquerda do campo de entrada */
+    margin-top: 16px; /* Margem superior */
+    font-size: 15px; /* Tamanho da fonte */
+    font-weight: 500; /* Peso da fonte médio */
+    transition: all .3s ease-out; /* Transição suave para todos os efeitos */
+}
+
+/* Estilos para o campo de entrada quando é válido */
+.label-float input:valid{
+    border-bottom: 2px solid var(--Greendark); /* Borda inferior verde escuro quando o campo é válido */
+}
+
+/* Estilos para o label flutuante quando o campo de entrada está focado ou não está vazio */
+.label-float input:focus + label,
+.label-float input:not(:placeholder-shown) + label{
+    font-size: 13px; /* Tamanho da fonte reduzido */
+    margin-top: -3px; /* Margem superior negativa para mover para cima */
+    color: var(--Gurple); /* Cor do texto (variável não definida anteriormente) */
+}
+
+/* Estilos para a linha de entrada flexível */
+.rowInput{
+    display: flex; /* Usa flexbox para alinhamento */
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: space-around; /* Espaçamento uniforme entre os itens */
+    width: 95%; /* Largura de 95% */
+}
+
+/* Estilos para o seletor flutuante */
+.label-float-select{
+    margin: 1em; /* Margem em todas as direções */
+    position: relative; /* Posicionamento relativo */
+    padding-top: 13px; /* Padding superior */
+    width: 90%; /* Largura de 90% */
+}
+
+/* Estilos para o seletor dentro do label flutuante */
+.label-float-select select{
+    border: 0; /* Sem borda */
+    border-bottom: 2px solid var(--dark3); /* Borda inferior cinza médio */
+    outline: none; /* Sem contorno ao focar */
+    width: 100%; /* Largura total */
+    background-color: transparent; /* Fundo transparente */
+    font-weight: 500; /* Peso da fonte médio */
+    padding: .5em; /* Padding interno */
+    color: var(--dark2); /* Cor do texto cinza escuro */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: all .3s ease-out; /* Transição suave para todos os efeitos */
+    border-radius: 0; /* Sem bordas arredondadas */
+}
+
+/* Estilos para o seletor quando focado */
+.label-float-select select:focus{
+    border-bottom: 2px solid var(--Greendark); /* Borda inferior verde escuro ao focar */
+}
+
+/* Estilos para o placeholder do seletor */
+.label-float-select select::placeholder{
+    color:transparent; /* Placeholder transparente */
+}
+
+/* Estilos para o seletor quando é válido */
+.label-float-select input:valid{
+    border-bottom: 2px solid var(--Greendark); /* Borda inferior verde escuro quando o campo é válido */
+}
+
+/* Estilos para o botão de adição */
+.addButton{
+    width: 90%; /* Largura de 90% */
+    height: 50px; /* Altura fixa */
+    margin: 1em auto; /* Margem superior e inferior e centralização horizontal */
+    cursor: pointer; /* Cursor em forma de ponteiro */
+    border-radius: 5px; /* Bordas arredondadas */
+    border: 0; /* Sem borda */
+    display: flex; /* Usa flexbox para alinhamento */
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    background-color: var(--Greendark); /* Cor de fundo verde escuro */
+    box-shadow: 0 7px 0 #008033; /* Sombra abaixo do botão */
+    font-weight: 600; /* Peso da fonte semi-negrito */
+    letter-spacing: 1px; /* Espaçamento entre as letras */
+    font-size: 20px; /* Tamanho da fonte */
+    color: var(--Light); /* Cor do texto branca */
+    text-shadow: 0 0 10px #008033; /* Sombra no texto */
+    transition: all ease-in-out .1s; /* Transição suave para todos os efeitos */
+}
+
+/* Estilos para o botão de adição ao passar o mouse */
+.addButton:hover{
+    filter: brightness(1.3); /* Aumenta o brilho ao passar o mouse */
+    transition: all ease-in-out .1s; /* Transição suave para todos os efeitos */
+}
+
+/* Estilos para o botão de adição ao clicar */
+.addButton:active{
+    box-shadow: 0 3px 0 #1AA34A; /* Sombra mais curta quando clicado */
+    transform: translateY(5px); /* Move o botão para baixo quando clicado */
+    transition: all ease-in-out .1s; /* Transição suave para todos os efeitos */
+}
+
+/* Estilos para a seção de login */
+.loginSection{
+    width: 100%; /* Largura total */
+    background: #4D4D4D; /* Cor de fundo cinza */
+    min-height: 91vh; /* Altura mínima de 91% da altura da viewport */
+    display: flex; /* Usa flexbox para alinhamento */
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+}
+
+/* Estilos para a área de login */
+.loginArea{
+    width: 400px; /* Largura fixa */
+    background: linear-gradient(45deg, #24B253 0%, #1AA34A 100%); /* Gradiente de verde */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 0 10px #11111150; /* Sombra na caixa */
+    position: relative; /* Posicionamento relativo */
+    padding: 2em; /* Padding interno */
+    margin: 3em auto; /* Margem superior e inferior e centralização horizontal */
+}
+
+/* Estilos para o título da área de login */
+.loginArea h1{
+    text-align: center; /* Texto centralizado */
+    font-size: 30px; /* Tamanho da fonte */
+    color: var(--Light); /* Cor do texto branca */
+    font-weight: 700; /* Peso da fonte negrito */
+    letter-spacing: 1px; /* Espaçamento entre as letras */
+    margin: 1em auto 2em auto; /* Margem em todas as direções e centralização horizontal */
+}
+
+/* Estilos para o label flutuante na seção de login */
+.label-float-login{
+    position: relative; /* Posicionamento relativo */
+    padding-top: 13px; /* Espaço no topo */
+    width: 100%; /* Largura total */
+    margin: 1em 0; /* Margem superior e inferior */
+}
+
+/* Estilos para o input dentro do label flutuante na seção de login */
+.label-float-login input{
+    border: 0; /* Sem borda */
+    border-bottom: 2px solid var(--light); /* Borda inferior branca */
+    outline: none; /* Sem contorno ao focar */
+    width: 100%; /* Largura total */
+    background-color: transparent; /* Fundo transparente */
+    height: 30px; /* Altura fixa */
+    font-weight: 500; /* Peso da fonte médio */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: all .3s ease-out; /* Transição suave para todos os efeitos */
+    color: var(--Light); /* Cor do texto branca */
+    border-radius: 0; /* Sem bordas arredondadas */
+}
+
+/* Estilos para o input quando focado */
+.label-float-login input:focus{
+    border-bottom: 2px solid var(--light); /* Mantém a borda inferior branca ao focar */
+}
+
+/* Estilos para o placeholder do input */
+.label-float-login input::placeholder{
+    color:transparent; /* Placeholder transparente */
+}
+
+/* Estilos para o label dentro do label flutuante */
+.label-float-login label{
+    pointer-events: none; /* O label não interfere com eventos do mouse */
+    position: absolute; /* Posicionamento absoluto */
+    top: 0; /* No topo do input */
+    left: 0; /* À esquerda do input */
+    margin-top: 16px; /* Espaço no topo */
+    font-size: 15px; /* Tamanho da fonte */
+    font-weight: 500; /* Peso da fonte médio */
+    color: var(--light); /* Cor do texto branca */
+    transition: all .3s ease-out; /* Transição suave para todos os efeitos */
+}
+
+/* Estilos para o input quando é válido */
+.label-float-login input:valid{
+    border-bottom: 2px solid var(--dark3); /* Borda inferior cinza médio quando o input é válido */
+}
+
+/* Estilos para o label quando o input está focado ou não está vazio */
+.label-float-login input:focus + label,
+.label-float-login input:not(:placeholder-shown) + label{
+    font-size: 13px; /* Tamanho da fonte reduzido */
+    margin-top: -3px; /* Margem superior negativa para mover o label para cima */
+    color: var(--dark3); /* Cor do texto cinza médio */
+}
+
+/* Estilos para o botão de login */
+.buttonLogin{
+    width: 100%; /* Largura total */
+    height: 50px; /* Altura fixa */
+    margin: 2em 0; /* Margem superior e inferior */
+    cursor: pointer; /* Cursor em forma de ponteiro */
+    border-radius: 5px; /* Bordas arredondadas */
+    border: 0; /* Sem borda */
+    display: flex; /* Usa flexbox para alinhamento */
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    background-color: #4D4D4D; /* Cor de fundo cinza */
+    box-shadow: 0 7px 0 #393939; /* Sombra abaixo do botão */
+    font-weight: 600; /* Peso da fonte semi-negrito */
+    letter-spacing: 1px; /* Espaçamento entre as letras */
+    font-size: 20px; /* Tamanho da fonte */
+    color: var(--Light); /* Cor do texto branca */
+    text-shadow: 0 0 10px #ffffff50; /* Sombra no texto */
+    transition: all ease-in-out .1s; /* Transição suave para todos os efeitos */
+}
+
+/* Estilos para o botão de login ao passar o mouse */
+.buttonLogin:hover{
+    filter: brightness(1.3); /* Aumenta o brilho ao passar o mouse */
+    transition: all ease-in-out .1s; /* Transição suave para todos os efeitos */
+}
+
+/* Estilos para o botão de login ao clicar */
+.buttonLogin:active{
+    box-shadow: 0 3px 0 #393939; /* Sombra mais curta quando clicado */
+    transform: translateY(5px); /* Move o botão para baixo quando clicado */
+    transition: all ease-in-out .1s; /* Transição suave para todos os efeitos */
+}
+
+/* Estilos para o link de esqueci minha senha */
+.forgotPsw{
+    color: var(--Light); /* Cor do texto branca */
+    font-size: 15px; /* Tamanho da fonte */
+}
+
+/* Estilos para o link de esqueci minha senha ao passar o mouse */
+.forgotPsw:hover{
+    color: #4D4D4D; /* Cor do texto cinza ao passar o mouse */
+    text-shadow: 0 0 10px #393939; /* Sombra no texto */
+    font-size: 15px; /* Tamanho da fonte */
+}
+
+/* Estilos para a seção de cadastro */
+.signup{
+    color: var(--Light); /* Cor do texto branca */
+    font-weight: 500; /* Peso da fonte médio */
+    text-align: center; /* Texto centralizado */
+}
+
+/* Estilos para o link dentro da seção de cadastro */
+.signup a{
+    color: #4D4D4D; /* Cor do texto cinza */
+}
+
+/* Estilos para a mensagem de aviso */
+.warning{
+    text-align: center; /* Texto centralizado */
+    font-weight: 600; /* Peso da fonte semi-negrito */
+    font-size: 20px; /* Tamanho da fonte */
+    color: var(--Red); /* Cor do texto vermelho */
+    text-shadow: 0 0 10px #ff003350; /* Sombra no texto */
+    margin: 1em auto 2em auto; /* Margem em todas as direções e centralização horizontal */
+}
+
+/* Estilos para a linha horizontal na área de login */
+.loginArea hr{
+    height: 2px; /* Altura da linha */
+    border: 0; /* Sem borda */
+    margin: 4em auto 2em auto; /* Margem superior, inferior e centralização horizontal */
+    background-color: #4d4d4d; /* Cor de fundo cinza */
+    width: 100%; /* Largura total */
+}
+
+
+
+
+/* Estilos para o botão de exclusão */
+.deleteButton{
+    width: 60%; /* Largura de 60% do contêiner pai */
+    height: 40px; /* Altura fixa de 40px */
+    margin: 4em auto 0 auto; /* Margem superior de 4em e centralizado horizontalmente */
+    cursor: pointer; /* Cursor em forma de ponteiro indicando um botão clicável */
+    border-radius: 5px; /* Bordas arredondadas de 5px */
+    border: 0; /* Sem borda */
+    display: flex; /* Usa flexbox para alinhamento */
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    background-color: var(--Red); /* Cor de fundo vermelha */
+    box-shadow: 0 0 10px #11111150; /* Sombra ao redor do botão */
+    font-weight: 600; /* Peso da fonte semi-negrito */
+    letter-spacing: 1px; /* Espaçamento entre as letras de 1px */
+    font-size: 20px; /* Tamanho da fonte de 20px */
+    color: var(--Light); /* Cor do texto branca */
+    text-shadow: 0 0 10px #ffffff50; /* Sombra no texto */
+    transition: all ease-in-out .1s; /* Transição suave para todos os efeitos */
+}
+
+/* Estilos para a área modal de exclusão */
+.ModalAreaDelete{
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    position: fixed; /* Posicionamento fixo na tela */
+    z-index: 10; /* Índice de empilhamento */
+    top: 0; /* Posição superior */
+    left: 0; /* Posição esquerda */
+    display: none; /* Inicialmente não exibido */
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+}
+
+/* Estilos para o fundo da área modal de exclusão */
+.ModalBackDelete{
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    z-index: 11; /* Índice de empilhamento */
+    position: absolute; /* Posicionamento absoluto */
+    background-color: #000; /* Cor de fundo preta */
+    opacity: 60%; /* Opacidade de 60% */
+}
+
+/* Estilos para a frente da área modal de exclusão */
+.ModalFrontDelete{
+    position: relative; /* Posicionamento relativo */
+    width: 95%; /* Largura de 95% do contêiner pai */
+    max-width: 400px; /* Largura máxima de 400px */
+    border-radius: 5px; /* Bordas arredondadas de 5px */
+    box-shadow: 0 0 10px #11111150; /* Sombra ao redor da caixa */
+    z-index: 12; /* Índice de empilhamento */
+    background-color: var(--light2); /* Cor de fundo cinza claro */
+    display: flex; /* Usa flexbox para alinhamento */
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: space-between; /* Espaçamento entre os itens */
+    padding: 1em; /* Padding interno de 1em */
+    flex-direction: column; /* Os itens são dispostos em coluna */
+}
+
+/* Estilos para o título h2 dentro da área modal de exclusão */
+.ModalFrontDelete h2{
+    font-size: 24px; /* Tamanho da fonte de 24px */
+    font-weight: 700; /* Peso da fonte negrito */
+    text-align: center; /* Texto centralizado */
+}
+
+/* Estilos para os botões dentro da área modal de exclusão */
+.buttonsModalDelete{
+    display: flex; /* Usa flexbox para alinhamento */
+    width: 100%; /* Largura total */
+    justify-content: flex-end; /* Alinha os itens ao final do contêiner (direita) */
+    align-items: center; /* Centraliza os itens verticalmente */
+    margin: 1em 0; /* Margem superior e inferior de 1em */
+}
+
+/* Estilos para o rodapé */
+.footer{
+    width: 100%; /* Largura total */
+    height: 150px; /* Altura fixa de 150px */
+    display: flex; /* Usa flexbox para alinhamento */
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    flex-direction: column; /* Os itens são dispostos em coluna */
+    background: linear-gradient(90deg, #24B253 0%, #24B253 100%); /* Gradiente de verde */
+}
+
+/* Estilos para a imagem dentro do rodapé */
+.footer img{
+    height: 40px; /* Altura fixa de 40px */
+    margin: 1em; /* Margem em todas as direções de 1em */
+    filter: drop-shadow(0 0 6px #24B253); /* Sombra verde ao redor da imagem */
+}
+
+/* Estilos para o parágrafo dentro do rodapé */
+.footer p{
+    font-size: 16px; /* Tamanho da fonte de 16px */
+    color: var(--Light); /* Cor do texto branca */
+    font-weight: 500; /* Peso da fonte médio */
+}
+
+/* Estilos para exibir elementos com a classe 'show' */
+.show{
+    display: flex; /* Exibe o elemento como flexbox */
+}
